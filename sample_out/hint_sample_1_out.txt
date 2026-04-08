@@ -1,0 +1,25 @@
+Hello Flex + Bison
+TOKEN: T_IDENT LEXEME: apple
+TOKEN: OP_ASSIGN LEXEME: :=
+TOKEN: T_DECIMAL LEXEME: 13.5
+RULE: Assignment ::= T_IDENT := T_DECIMAL
+RULE: Statement ::= Assignment
+TOKEN: K_SC LEXEME: ;
+TOKEN: T_IDENT LEXEME: banana
+TOKEN: OP_ASSIGN LEXEME: :=
+TOKEN: T_DECIMAL LEXEME: 3.14
+RULE: Assignment ::= T_IDENT := T_DECIMAL
+RULE: Statement ::= Assignment
+TOKEN: K_SC LEXEME: ;
+TOKEN: K_WRITE LEXEME: WRITE
+TOKEN: K_LPAREN LEXEME: (
+TOKEN: T_INTEGER LEXEME: 123
+TOKEN: K_RPAREN LEXEME: )
+RULE: WriteStatement ::= WRITE ( T_INTEGER )
+RULE: Statement ::= WriteStatement
+RULE: StatementSequence ::= Statement
+RULE: StatementSequence ::= Statement ;
+StatementSequence
+RULE: StatementSequence ::= Statement ;
+StatementSequence
+CORRECT

@@ -1,0 +1,3 @@
+apple := 13.5 ;
+banana := 3.14 ;
+WRITE ( 123 )

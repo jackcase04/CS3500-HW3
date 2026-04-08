@@ -1,0 +1,9 @@
+WHILE a # b DO
+  IF a > b THEN
+    a := a - b
+  ELSE
+    b := b - a
+  END
+END ;
+WRITE ( "Hello" &
+         "World!" )

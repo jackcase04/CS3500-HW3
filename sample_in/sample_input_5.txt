@@ -1,0 +1,4 @@
+WRITE WRITE ;
+  x := WHILE ;
+  WRITE ( : ) ;
+IF

@@ -23,21 +23,34 @@ DIGIT [0-9]
 ALPHA [a-zA-Z]
 ALPHANUM [a-zA-Z0-9]
 
-%% /* -- REGULAR EXPRESSIONS ---------------------------- */
+%%
+ /* -- REGULAR EXPRESSIONS ---------------------------- */
 
 {WHITE} ; /* eat white space */
 \n { line_num++; } /* count line numbers */
 
+"IF" { writeToken("K_IF"); return K_IF; }
+"THEN" { writeToken("K_THEN"); return K_THEN; }
+"ELSE" { writeToken("K_ELSE"); return K_ELSE; }
+"WHILE" { writeToken("K_WHILE"); return K_WHILE; }
+"END" {writeToken("K_END"); return K_END; }
+"DO" {writeToken("K_DO"); return K_DO; }
 ";" { writeToken("K_SC"); return K_SC; }
 "(" { writeToken("K_LPAREN"); return K_LPAREN; }
 ")" { writeToken("K_RPAREN"); return K_RPAREN; }
 "WRITE" { writeToken("K_WRITE"); return K_WRITE; }
 
 ":=" { writeToken("OP_ASSIGN"); return OP_ASSIGN; }
+"~" {writeToken("OP_NEG"); return OP_NEG; }
+[<>=#] {writeToken("OP_RELATION"); return OP_RELATION; }
+[+\-\&]|OR { writeToken("OP_ADD"); return OP_ADD; }
+[*\/]|AND { writeToken("OP_MULT"); return OP_MULT; }
+
 
 {ALPHA}{ALPHANUM}* { writeToken("T_IDENT"); return T_IDENT; }
 [+-]?{DIGIT}+ { writeToken("T_INTEGER"); return T_INTEGER; }
 [+-]?{DIGIT}+\.{DIGIT}+ { writeToken("T_DECIMAL"); return T_DECIMAL; }
+\"[^\" \n\t]+\"    { writeToken("T_STRING"); return T_STRING; }
 
 
 %% /* -- EPILOGUE -------------------------------------- */

@@ -1,0 +1,34 @@
+TOKEN: T_IDENT       LEXEME: x
+TOKEN: OP_ASSIGN     LEXEME: :=
+TOKEN: T_INTEGER     LEXEME: 2
+RULE: Factor ::= T_INTEGER
+TOKEN: OP_ADD        LEXEME: +
+RULE: Term ::= Factor
+TOKEN: T_INTEGER     LEXEME: 2
+RULE: Factor ::= T_INTEGER
+TOKEN: K_SC          LEXEME: ;
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+RULE: SimpleExpression ::= Term OP_ADD
+SimpleExpression
+RULE: Expression ::= SimpleExpression
+RULE: Assignment ::= T_IDENT := Expression
+RULE: Statement ::= Assignment
+TOKEN: K_WRITE       LEXEME: WRITE
+TOKEN: K_LPAREN      LEXEME: (
+TOKEN: T_IDENT       LEXEME: x
+RULE: Factor ::= T_IDENT
+TOKEN: OP_MULT       LEXEME: *
+TOKEN: T_INTEGER     LEXEME: 100
+RULE: Factor ::= T_INTEGER
+TOKEN: K_RPAREN      LEXEME: )
+RULE: Term ::= Factor
+RULE: Term ::= Factor OP_MULT Term
+RULE: SimpleExpression ::= Term
+RULE: Expression ::= SimpleExpression
+RULE: WriteStatement ::= WRITE ( Expression )
+RULE: Statement ::= WriteStatement
+RULE: StatementSequence ::= Statement
+RULE: StatementSequence ::= Statement ;
+StatementSequence
+VALID

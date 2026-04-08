@@ -1,0 +1,4 @@
+TOKEN: K_WRITE       LEXEME: WRITE
+TOKEN: K_WRITE       LEXEME: WRITE
+ERROR: In line 1 with token 'WRITE'
+INVALID!

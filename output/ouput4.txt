@@ -1,0 +1,4 @@
+TOKEN: T_IDENT       LEXEME: void
+TOKEN: T_IDENT       LEXEME: main
+ERROR: In line 1 with token 'main'
+INVALID!
